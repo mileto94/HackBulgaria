@@ -4,11 +4,11 @@ class OrderPizza():
         self.order = order
 
     def take_order(self, name, price):
-        new_price = price
-        for index in range(len(self.order)):
-            if name in self.order[index]:
-                new_price += self.order[index][1]
-                del self.order[index]
+        new_price = float(price)
+        for item in self.order:
+            if name in item:
+                new_price += item[1]
+                self.order.remove(item)
         self.order.append((name, new_price))
         return self.order
 

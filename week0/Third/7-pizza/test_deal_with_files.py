@@ -38,8 +38,9 @@ class TestDealWithFiles(unittest.TestCase):
 
 #True == True
     def test_load_data_from_file(self):
+        file_id = 2
+        filename = self.order.get_filename_by_file_id(file_id)
         files = glob.glob("orders_*")
-        filename = files[1]
         file_read = open(filename, "r")
         file_content = file_read.read().split("\n")
         file_read.close()
@@ -50,8 +51,8 @@ class TestDealWithFiles(unittest.TestCase):
         for file in test:
             for item in range(len(file)):
                 if file[item] == " ":
-                    expect.append((file[:item], file[item + 1:]))
-        self.assertEqual(expect, self.order.load_data(filename))
+                    expect.append((file[:item], float(file[item + 1:])))
+        self.assertEqual(expect, self.order.load_data(file_id))
 
 
 if __name__ == '__main__':

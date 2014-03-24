@@ -9,7 +9,7 @@ class TestOrderPizza(unittest.TestCase):
 
     def test_take_order(self):
         expect = [("Alex", 4.56), ("Marty", 5.33), ("Gloria", 6.19), ("Melmon", 9.34)]
-        self.order.take_order("Melmon", 2.00)
+        self.order.take_order("Melmon", '2.00')
         self.assertEqual(expect, self.order.take_order("Melmon", 7.34))
 
     def test_status(self):

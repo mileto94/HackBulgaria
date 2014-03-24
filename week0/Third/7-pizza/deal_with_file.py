@@ -29,7 +29,21 @@ class DealWithFiles(OrderPizza):
                 result += "\n"
         return result
 
-    def load_data(self, filename):
+    def get_filename_by_file_id(self, file_id):
+        files = self.match_lists_with_id()
+        # print(files)
+        # x = ""
+        # for item in range(len(files)):
+        #     if file_id == files[item][0]:
+        #         x = files[item][1]
+        #     # elif file_id not in range(1, len(files) + 1):
+        #         # print("Oops, there is no file with this id! Try again :)")
+        # print(x)
+        return files[file_id - 1][1]
+
+    def load_data(self, file_id):
+        filename = self.get_filename_by_file_id(file_id)
+        print(filename)
         file_read = open(filename, "r")
         file_content = file_read.read().split("\n")
         file_read.close()
@@ -40,5 +54,5 @@ class DealWithFiles(OrderPizza):
         for content in contents:
             for index in range(len(content)):
                 if content[index] == " ":
-                    result.append((content[:index], content[index + 1:]))
+                    result.append((content[:index], float(content[index + 1:])))
         return result
