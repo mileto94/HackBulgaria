@@ -39,11 +39,10 @@ class DealWithFiles(OrderPizza):
         #     # elif file_id not in range(1, len(files) + 1):
         #         # print("Oops, there is no file with this id! Try again :)")
         # print(x)
-        return files[file_id - 1][1]
+        return files[int(file_id) - 1][1]
 
     def load_data(self, file_id):
         filename = self.get_filename_by_file_id(file_id)
-        print(filename)
         file_read = open(filename, "r")
         file_content = file_read.read().split("\n")
         file_read.close()
