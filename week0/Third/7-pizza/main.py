@@ -48,20 +48,24 @@ finish"""
             print(orders.show_lists_with_id())
         elif command[0] == "load":
             command_list.append("load")
-            print(command_list)
             if "list" not in command_list:
                 print("Use list command before loading :D")
             elif "save" not in command_list and command_list.count("load") < 2:
                 print("You have unsaved orders. If you want to continue, enter <load> again :)")
             elif command_list.count("load") == 2:
+                if command_list[1] == "":
+                    print("Oops, bad input! Try again entering <load> <number>")
+                print("Loading file %s" % orders.get_filename_by_file_id(command[1]))
                 t = orders.load_data(command[1])
-                orders = t
-                print(orders)
+                orders = DealWithFiles(t)
+                print(orders.print_status())
         elif command[0] == "finish":
             command_list.append("finish")
             print(goodbye)
             break
-
+        else:
+            print("Sorry, but I don't get what you mean")
+            print(help_you)
 
 if __name__ == '__main__':
     main()
