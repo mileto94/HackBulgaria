@@ -1,6 +1,7 @@
 import solution
 import unittest
 
+
 class TestSlopeStyleScore(unittest.TestCase):
     """docstring for TestSlopeStylr_score"""
     def test_1(self):
